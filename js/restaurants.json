@@ -1,0 +1,20 @@
+const restaurants = [
+  {
+    "name": "Dig Inn - Midtown South",
+    "address": {
+      "street":"275 Madison Ave.",
+      "city": "New York",
+      "state": "NY",
+      "zip": 10016,
+    },
+    "phone": 2126977867,
+    "menuItems": [
+      {
+        "name": "Roasted Wild Alaskan Salmon Marketbowl",
+        "description": "Wild Alaskan Salmon with lemon thyme. Gluten-Free. Farm Greens with Mint (Base), Cashew Kale Caesar (Market side) , Lemon Wedge (Sauce)",
+        "price": 12.96,
+        "tags": ["Low Sodium", "Low Sugar"]
+      }
+    ]
+  }   
+]
