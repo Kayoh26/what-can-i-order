@@ -1,4 +1,6 @@
-/*Landing Page Styles*/
+/* *{
+  border: dashed 2px blue;
+} */
 body {
   font-family: Helvetica, Arial, sans-serif;
   margin: auto;
@@ -8,11 +10,147 @@ body {
   margin: auto;
 }
 
-.wcio-logo h1{
+/*Logo Style*/
+.wcio-logo {
   background-color: #2E3047;
+  padding: 100px 350px 100px 350px;
+}
+
+.wcio-logo h1{
   color: #3BBA9C;
   font-size: 100px;
   margin: auto;
-  padding: 100px 300px 100px 300px;
+  border: 3px solid white;
   text-align: center;
+  padding-left: 85px;
+  padding-right: 85px;
+}
+
+/*Restriction List styles*/
+.restrictions {
+  background-color: #707793;
+  margin: auto;
+  padding: 30px 300px 30px 300px;
+  color: white;
+}
+
+.restrictions h2{
+  font-size: 45px;
+  text-align: center;
+  margin: auto;
+}
+
+.restriction-options-container {
+  font-size: 23px;
+  padding: 20px 200px 20px 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  text-align: center;
+}
+
+.search-button {
+  text-align: center;
+  font-size: 25px;
+  background-color: #2E3047;
+  color: #3BBA9C;
+  padding: 5px 40px 5px 40px;
+}
+
+/*Restaurant list style*/
+.restaurant-list {
+  background-color:  #43455c;
+  padding: 30px 300px 30px 300px;
+  color: white;
+}
+
+.restaurant-list h2{
+  margin: auto;
+  color: #3BBA9C;
+  font-size: 35px;
+}
+
+.restaurant-list a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+.restaurant-list a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+/*Results Page Styles*/
+.back-to-results {
+  background-color: #2E3047;
+  color: #3BBA9C;
+  padding: 5px 40px 5px 40px;
+  text-align: center;
+}
+.back-to-results a{
+  text-decoration: none;
+  color: white;
+}
+/*Results Container styles*/
+.content-container {
+  background-color:  #43455c;
+  padding: 30px 300px 30px 300px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-container h3{
+  color: #3BBA9C;
+  font-size: 25px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+/*Results Styles*/
+.results {
+  width: 490px;
+  padding: 5px;
+}
+
+.results li {
+  font-size: 28px;
+}
+
+.menu-item-description {
+  font-weight: 100;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.menu-item-tags span {
+  font-size: 18px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 5px;
+  background-color: lightgrey;
+  color: black
+}
+
+/*Sidebar Styles*/
+.sidebar {
+  width: 290px;
+  padding: 5px;
+}
+
+.map {
+  height: 250px;
+  background-color: lightgrey;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.sidebar p{
+  font-weight: 100;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

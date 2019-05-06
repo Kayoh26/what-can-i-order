@@ -14,32 +14,40 @@
 
       <!--Diet Restriction List-->
       <div class="restrictions">
-        <h2>Choose Diet restrictions</h2>
+        <h2>Choose Diet Restrictions</h2>
 
         <!--Checkboxes for diet restrictions-->
-        <div>
-          <input type="checkbox" id="low-sodium" name="low-sodium" value="">
-          <label for="low-sodium">Low Sodium</label>
-        </div>
-        <div>
-          <input type="checkbox" id="low-potassium" name="low-potassium" value="">
-          <label for="low-potassium">Low Potassium</label>
-        </div>
-        <div>
-          <input type="checkbox" id="low-cholestorol" name="low-cholestorol" value="">
-          <label for="low-cholestorol">Low Cholestorol</label>
-        </div>
-        <div>
-          <input type="checkbox" id="low-sugar" name="low-sugar" value="">
-          <label for="low-sugar">Low Sugar</label>
-        </div>
+        <div class="restriction-options-container">
+          <div class="left-list-items">
+            <div>
+              <input type="checkbox" id="low-sodium" name="low-sodium" value="">
+              <label for="low-sodium">Low Sodium</label>
+            </div>
+            <div>
+              <input type="checkbox" id="low-potassium" name="low-potassium" value="">
+              <label for="low-potassium">Low Potassium</label>
+            </div>
+          </div>
+          <div class="right-list-items">
+            <div>
+              <input type="checkbox" id="low-cholestorol" name="low-cholestorol" value="">
+              <label for="low-cholestorol">Low Cholestorol</label>
+            </div>
+            <div>
+              <input type="checkbox" id="low-sugar" name="low-sugar" value="">
+              <label for="low-sugar">Low Sugar</label>
+            </div>
+          </div>
+        </div> <!--End of diet restrictions checkbox container-->
 
         <!--Search Button-->
-        <button type="button" name="search">Search</button>
+        <div class="search">
+          <button type="button" name="search" class="search-button">Search</button>
+        </div>
       </div>
 
       <!--List of Restaurants-->
-      <div class="restaurant-list`">
+      <div class="restaurant-list">
         <h2>Restaurants</h2>
         <ul>
           <li><a href="#">The Little Beet Table</a></li>
