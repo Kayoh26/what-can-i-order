@@ -20,7 +20,7 @@ body {
   color: #3BBA9C;
   font-size: 100px;
   margin: auto;
-  border: 3px solid white;
+  border: 2px solid white;
   text-align: center;
   padding-left: 85px;
   padding-right: 85px;
@@ -38,10 +38,11 @@ body {
   font-size: 45px;
   text-align: center;
   margin: auto;
+  background-color: #43455c;
 }
 
 .restriction-options-container {
-  font-size: 23px;
+  font-size: 25px;
   padding: 20px 200px 20px 200px;
   display: flex;
   justify-content: space-between;
@@ -96,7 +97,8 @@ body {
   background-color: #2E3047;
   text-decoration: none;
   color: #3BBA9C;
-  padding: 5px 20px 5px 20px;
+  font-size: 25px;
+  padding: 5px 40px 5px 40px;
   border: .5px solid white;
 }
 /*Results Container styles*/
