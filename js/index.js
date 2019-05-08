@@ -209,10 +209,36 @@ $(function() {
   // print restaurant array to console.
   console.log(restaurants);
 
+  //print tags from restaurant
+  let restaurantTags = [];
+
+  let userRestriction = "low sodium";
+  // restaurantTags =  restaurants[0].menuItems[0].tags;
+  // console.log(restaurantTags);
+
+  //iterate through the restaurants array of objects
+  //Get array of tags
+  $.each(restaurants,function (index,value) {
+    console.log(value.name, value.menuItems);
+    console.log('Is menuItems an array?:',$.isArray(value.menuItems));
+    //Iterate through menuItems array of objects
+    $.each(value.menuItems, function (index2,value2) {
+      console.log(index2, value2.tags);
+      console.log($.isArray(value2.tags));
+      //Iterate through tags array of menu item
+      $.each(value2.tags,function (index3,value3) {
+        console.log("Menu item Tag: " ,value3);
+        console.log("userRestriction: ", userRestriction)
+        console.log("Item tag and user restriction match =" , value3 === userRestriction);
+        console.log("Restaurant Name:", value.name);
+      });
+    });
+  });
+
   //Set up an empty array that will store the selected diet restrictions
   let selectedRestrictions = [];
 
-  //Print list of restaurants to the landing page.
+  //Display list of restaurants to the landing page.
   $.each(restaurants, function(index,value){
     // console.log("index:", index);
     // console.log("restaurant name:", value.name);
@@ -220,21 +246,26 @@ $(function() {
     $(".restaurant-list ul").append(`<li><a href="resultspage.html">${value.name}</a></li>`);
   });
 
+  //Function that will remove a dash from the string passed through.
+  function removeHyphen(string) {
+    return string.replace(/-/g," ");
+  }
+
   //Listen for a click on the search button and call function handle
   //handleFilter to handle the filter.
   $(".search-button").click(handleFilter);
 
   //Fucntion to handle filters that were selected by user.
   function handleFilter (){
-    console.log("clicked filter");
+    // console.log("clicked filter");
+    //For each checkbox that is selected, store it's id in the
+    //selectedRestrictions array.
     $(".checkbox:checked").each(function(index, checkbox) {
-      console.log('selected item', checkbox.id)
-      selectedRestrictions.push(checkbox.id)
-      console.log(selectedRestrictions);
-    })
+      selectedRestrictions.push(removeHyphen(checkbox.id));
+    });
   };
 
-  //Function that will remove a dash from checkbox id. 
+
 
 
 });
