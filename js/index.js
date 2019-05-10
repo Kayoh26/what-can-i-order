@@ -224,32 +224,7 @@ $(function() {
   console.log(restaurants);
 
   //print tags from restaurant
-  let restaurantTags = [];
-
-  let userRestriction = "low sodium";
-  // restaurantTags =  restaurants[0].menuItems[0].tags;
-  // console.log(restaurantTags);
-
-  //iterate through the restaurants array of objects
-  //Get array of tags
-  $.each(restaurants,function (index,value) {
-    console.log(`Restaurant ${index+1} Name:`,value.name, value.menuItems);
-    console.log('Is menuItems an array?:',$.isArray(value.menuItems));
-    //Iterate through menuItems array of objects
-    $.each(value.menuItems, function (index2,value2) {
-      console.log(index2, value2.tags);
-      console.log(`Menu Item ${index2+1}:`,value2.name);
-      console.log('Is menu Item tags an array?',$.isArray(value2.tags));
-      
-      //Iterate through tags array of menu item
-      $.each(value2.tags,function (index3,value3) {
-        console.log(`Menu item ${index2+1} Tag ${index3+1}:` ,value3);
-        console.log("userRestriction: ", userRestriction)
-        console.log("Item tag and user restriction match =" , value3 === userRestriction);
-        // console.log("Restaurant Name:", value.name);
-      });
-    });
-  });
+  // let restaurantTags = [];
 
   //Set up an empty array that will store the selected diet restrictions
   let selectedRestrictions = [];
@@ -279,9 +254,44 @@ $(function() {
     $(".checkbox:checked").each(function(index, checkbox) {
       selectedRestrictions.push(removeHyphen(checkbox.id));
     });
+    console.log("selectedRestrictions",selectedRestrictions);
+    //Iterate through the restaurants array of objects
+    //Get array of tags
+    //Compare tags to selected restrictions
+    let restFilter = restaurants.filter(function (restaurant) {
+      //Need to return true statement to have filter pop out object
+      console.log("Restaurant Object:",restaurant);
+      console.log("Restaurant name:",restaurant.name);
+      let restMenuItems = restaurant.menuItems; //Array of Objects
+      console.log("Restaurant Menu Items:",restMenuItems);
+      let restMenuItemsTags = [];
+      $.each(restaurant.menuItems, function(index, menuItem){
+        console.log(`Menu Item ${index} Tags:`,menuItem.tags);
+        $.each(menuItem.tags,function(index2,tag){
+          console.log(`Menu Item ${index} Tag:`, tag);
+          restMenuItemsTags.push(tag);
+        });
+      });
+      console.log("restMenuItemsTags",restMenuItemsTags);
+      let results = [];
+      $.each(selectedRestrictions, function(index,value){
+        console.log(`${value} inArray() result: `, $.inArray(value,restMenuItemsTags)!== -1);
+        results.push($.inArray(value,restMenuItemsTags)!== -1);
+      });
+      console.log("Restaurant Menu Item Tags: ",restMenuItemsTags);
+      console.log("In array:", $.inArray(true,results) !== -1 );
+
+      //Return true to put out object
+      return $.inArray(true,results) !== -1;
+    });
+    console.log("restFilter",restFilter);
+
+    //Display restFilter array to screen
+    $.each(restFilter,function (index,value) {
+      console.log("Restaurant Name:", value.name);
+    });
+
   };
-
-
 
 
 });
