@@ -248,6 +248,7 @@ $(function() {
 
   //Fucntion to handle filters that were selected by user.
   function handleFilter (){
+    clearRestList();
     // console.log("clicked filter");
     //For each checkbox that is selected, store it's id in the
     //selectedRestrictions array.
@@ -289,9 +290,15 @@ $(function() {
     //Display restFilter array to screen
     $.each(restFilter,function (index,value) {
       console.log("Restaurant Name:", value.name);
+      $(".restaurant-list ul").append(`<li><a href="resultspage.html">${value.name}</a></li>`);
     });
 
   };
+
+  //This function clears the restaurant list.
+  function clearRestList() {
+    $(".restaurant-list li").remove();
+  }
 
 
 });
