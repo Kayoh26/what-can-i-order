@@ -218,6 +218,7 @@ const restaurants = [
 ];
 
 $(function() {
+  //Print ready to console to show document is ready.
   console.log("Ready!");
   //Print restaurant array to console.
   console.log(restaurants);
@@ -229,9 +230,6 @@ $(function() {
   //Set up variable to hold array of restaurant objects that meet selected user
   //restriction.
   let restFilter;
-
-  //Display list of restaurants to the landing page.
-  displayRestaurantNames(restaurants);
 
   //-------------LIST OF EVENT LISTENERS----------------
   //Listen for a click on the search button and call function handle
@@ -256,7 +254,7 @@ $(function() {
   //restaurant objects.
   function displayRestaurantNames(restaurantsArray) {
     $.each(restaurantsArray, function(index,value){
-      $(".restaurant-list ul").append(`<li><a href="#" class="restaurant-link">${value.name}</a></li>`);
+      $(".restaurant-list ul").append(`<li><a href="#" class="restaurant-link" id="${value.name}">${value.name}</a></li>`);
     });
   }
 
@@ -338,8 +336,25 @@ $(function() {
     $(".restaurant-info-container").css("display","flex");
 
     //Print list of restaurants that met restrictions chosen
-    console.log(restFilter);
+    console.log("restFilter",restFilter);
 
+    //restaurantName variable will hold name of restaurant
+    let restaurantName = $(this).attr('id');
+    //restaurantInfo will hold restaurant object
+    let chosenRestaurant;
+
+    //Find restaurant selected in array of restFilter
+    //return restaurant object and assign to restaurantInfo variable
+    chosenRestaurant = restFilter.find(function (restaurant) {
+      return restaurantName === restaurant.name;
+    });
+    console.log("chosenRestaurant:",chosenRestaurant);
+
+    //Display restaurant Name
+    $(".results h3").text(chosenRestaurant.name);
+
+    //Display Restaurant Address
+    $(".full-address").text(chosenRestaurant.address.street)
 
   };//End of handleRestaurantLink function
 
