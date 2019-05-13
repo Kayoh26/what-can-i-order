@@ -226,6 +226,9 @@ $(function() {
   //Hide restaurant info
   $(".restaurant-info-container").toggleClass("hide");
 
+  //Hide back-button
+  $(".back-button").toggleClass("hide");
+
   //------------LIST OF GLOBAL VARIABLES----------------
   //Set up an empty array that will store the selected diet restrictions
   let selectedRestrictions = [];
@@ -340,13 +343,13 @@ $(function() {
 
   //Function to handle when user clicks on a restaurant link
   function handleRestaurantLink(){
-
     console.log("Calling handleRestaurantLink function");
     //Hide restaurant list on page
     $(".restaurant-list").toggleClass("hide");
 
-    //Unhide restaurant info
+    //Unhide restaurant info & back button
     $(".restaurant-info-container").toggleClass("hide");
+    $(".back-button").toggleClass("hide");
 
     //Print list of restaurants that met restrictions chosen
     console.log("restFilter",restFilter);
@@ -375,7 +378,19 @@ $(function() {
     //Display restaurant phone number
     $(".phone-number").text(formatPhoneNumber(chosenRestaurant.phone));
 
-    $(".search-button").click(handleFilter);
+    $(".new-search-button").click(handleNewSearch);
   };//End of handleRestaurantLink function
 
+  //Function that will handle a new search.
+  function handleNewSearch() {
+    console.log('Calling handleNewSearch function');
+    clearRestaurantList();
+
+    //Unhide restaurant list on page
+    $(".restaurant-list").toggleClass("hide");
+
+    //Hide restaurant info & back button
+    $(".restaurant-info-container").toggleClass("hide");
+    $(".back-button").toggleClass("hide");
+  }
 });
