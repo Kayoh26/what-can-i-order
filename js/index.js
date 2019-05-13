@@ -224,10 +224,10 @@ $(function() {
   console.log(restaurants);
 
   //Hide restaurant info
-  $(".restaurant-info-container").toggleClass("hide");
+  $(".restaurant-info-container").addClass("hide");
 
   //Hide back-button
-  $(".back-button").toggleClass("hide");
+  $(".back-button").addClass("hide");
 
   //------------LIST OF GLOBAL VARIABLES----------------
   //Set up an empty array that will store the selected diet restrictions
@@ -235,12 +235,13 @@ $(function() {
 
   //Set up variable to hold array of restaurant objects that meet selected user
   //restriction.
-  let restFilter;
+  let restFilter=[];
 
   //-------------LIST OF EVENT LISTENERS----------------
   //Listen for a click on the search button and call function handle
   //handleFilter to handle the filter.
   $(".search-button").click(handleFilter);
+  $(".new-search-button").click(handleNewSearch);
 
   //Listen for a click on one of the links for each restaurant listed.
   $("a").click(handleRestaurantLink);
@@ -339,17 +340,18 @@ $(function() {
 
     //Listen for a click on one of the links for each restaurant listed.
     $("a").click(handleRestaurantLink);
+    // $(".new-search-button").click(handleNewSearch);
   };//End of handleFilter function
 
   //Function to handle when user clicks on a restaurant link
   function handleRestaurantLink(){
     console.log("Calling handleRestaurantLink function");
     //Hide restaurant list on page
-    $(".restaurant-list").toggleClass("hide");
+    $(".restaurant-list").addClass("hide");
 
     //Unhide restaurant info & back button
-    $(".restaurant-info-container").toggleClass("hide");
-    $(".back-button").toggleClass("hide");
+    $(".restaurant-info-container").removeClass("hide");
+    $(".back-button").removeClass("hide");
 
     //Print list of restaurants that met restrictions chosen
     console.log("restFilter",restFilter);
@@ -378,19 +380,41 @@ $(function() {
     //Display restaurant phone number
     $(".phone-number").text(formatPhoneNumber(chosenRestaurant.phone));
 
-    $(".new-search-button").click(handleNewSearch);
+    $(".back-button").click(handleBackToResults);
   };//End of handleRestaurantLink function
 
   //Function that will handle a new search.
   function handleNewSearch() {
-    console.log('Calling handleNewSearch function');
+    // console.log('Calling handleNewSearch function');
     clearRestaurantList();
 
+    //Reset checkboxes for filters
+    $('input:checkbox').removeAttr('checked');
+
+    //Reset variables
+    selectedRestrictions = [];
+    restFilter = [];
+
     //Unhide restaurant list on page
-    $(".restaurant-list").toggleClass("hide");
+    $(".restaurant-list").removeClass("hide");
 
     //Hide restaurant info & back button
-    $(".restaurant-info-container").toggleClass("hide");
-    $(".back-button").toggleClass("hide");
+    $(".restaurant-info-container").addClass("hide");
+    $(".back-button").addClass("hide");
+  };
+
+  //Function that will handle back to results
+  function handleBackToResults() {
+    // console.log('Calling handleBackToResults function');
+    //Hide Restaurant information
+    $(".restaurant-info-container").addClass("hide");
+
+    //Unhide restaurant list results on page
+    $(".restaurant-list").removeClass("hide");
+
+    //Hide Back to results button
+    $(".back-button").addClass("hide");
+
   }
+
 });
