@@ -223,6 +223,9 @@ $(function() {
   //Print restaurant array to console.
   console.log(restaurants);
 
+  //Hide restaurant info
+  $(".restaurant-info-container").toggleClass("hide");
+
   //------------LIST OF GLOBAL VARIABLES----------------
   //Set up an empty array that will store the selected diet restrictions
   let selectedRestrictions = [];
@@ -258,9 +261,18 @@ $(function() {
     });
   }
 
+  //Format phone number to show (xxx)xxx-xxx
+  function formatPhoneNumber (phoneNumber){
+    let cleaned = ('' + phoneNumber.toString()).replace(/\D/g, '')
+    let match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
+    if (match) {
+      return '(' + match[1] + ')' + match[2] + '-' + match[3]
+    }
+    return null
+  };
+
   //Function to handle filters that were selected by user.
-  function handleFilter(event){
-    event.preventDefault();
+  function handleFilter(){
     //Clear list of restaurants on page
     clearRestaurantList();
 
@@ -327,13 +339,14 @@ $(function() {
   };//End of handleFilter function
 
   //Function to handle when user clicks on a restaurant link
-  function handleRestaurantLink(event){
-    event.preventDefault();
+  function handleRestaurantLink(){
+
     console.log("Calling handleRestaurantLink function");
     //Hide restaurant list on page
-    $(".restaurant-list").css("display","none");
+    $(".restaurant-list").toggleClass("hide");
+
     //Unhide restaurant info
-    $(".restaurant-info-container").css("display","flex");
+    $(".restaurant-info-container").toggleClass("hide");
 
     //Print list of restaurants that met restrictions chosen
     console.log("restFilter",restFilter);
@@ -354,8 +367,15 @@ $(function() {
     $(".results h3").text(chosenRestaurant.name);
 
     //Display Restaurant Address
-    $(".full-address").text(chosenRestaurant.address.street)
+    $(".street").text(chosenRestaurant.address.street);
+    $(".city").text(chosenRestaurant.address.city);
+    $(".state").text(chosenRestaurant.address.state);
+    $(".zip").text(chosenRestaurant.address.zip);
 
+    //Display restaurant phone number
+    $(".phone-number").text(formatPhoneNumber(chosenRestaurant.phone));
+
+    $(".search-button").click(handleFilter);
   };//End of handleRestaurantLink function
 
 });
