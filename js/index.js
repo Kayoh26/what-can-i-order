@@ -265,6 +265,19 @@ $(function() {
     });
   }
 
+  //Function to display menu items when passed an array of
+  //menu items objects.
+  function displayMenuItems(menuItemsArray) {
+    $.each(menuItemsArray,function (index,value) {
+      $(".results ul").append(`<li>${value.name}</li>`);
+      $(".results ul").append(`<div class="menu-item-description">${value.description}</div>`);
+      if(value.specialInstructions !== ""){
+        $(".results ul").append(`<div class="special-instructions">Special Instructions: ${value.specialInstructions}</div>`);
+      }
+      $(".results ul").append(`<div class="menu-item-price">$${value.price}</div>`);
+    });
+  }
+
   //Format phone number to show (xxx)xxx-xxx
   function formatPhoneNumber (phoneNumber){
     let cleaned = ('' + phoneNumber.toString()).replace(/\D/g, '')
@@ -292,7 +305,7 @@ $(function() {
     //Compare tags to selected restrictions
     //Store restaurant in restFilter variable
     restFilter = restaurants.filter(function (restaurant) {
-      //Need to return true statement to have filter pop out object.
+      //Need to return true statement to have filter pull out object.
       // console.log("Restaurant Object:",restaurant);
       // console.log("Restaurant name:",restaurant.name);
 
@@ -360,6 +373,7 @@ $(function() {
     let restaurantName = $(this).attr('id');
     //restaurantInfo will hold restaurant object
     let chosenRestaurant;
+    let chosenRestMenuItems;
 
     //Find restaurant selected in array of restFilter
     //return restaurant object and assign to restaurantInfo variable
@@ -379,6 +393,29 @@ $(function() {
 
     //Display restaurant phone number
     $(".phone-number").text(formatPhoneNumber(chosenRestaurant.phone));
+
+    //Display menu items that meet the selected restrictions
+    chosenRestMenuItems = chosenRestaurant.menuItems;
+    console.log('chosenRestMenuItems:',chosenRestMenuItems);
+
+    let filteredMenuItems = chosenRestMenuItems.filter(function (menuItem){
+      console.log(menuItem.tags);
+
+      let results = [];
+
+      $.each(selectedRestrictions,function (index,value) {
+        console.log('inArray result:',$.inArray(value,menuItem.tags)!== -1);
+        results.push($.inArray(value,menuItem.tags)!== -1);
+      });
+      console.log('results:',results);
+
+      return $.inArray(true,results) !== -1;
+    });
+
+    console.log(filteredMenuItems);
+
+    //Display filtered menu items to screen
+    displayMenuItems(filteredMenuItems);
 
     $(".back-button").click(handleBackToResults);
   };//End of handleRestaurantLink function
