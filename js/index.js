@@ -257,6 +257,12 @@ $(function() {
     $(".restaurant-list li").remove();
   }
 
+  //This function clears the menu items on page.
+  function clearMenuItems() {
+    $(".results li").remove();
+    $(".results div").remove();
+  }
+
   //Function to display restaurant names when passed an array of
   //restaurant objects.
   function displayRestaurantNames(restaurantsArray) {
@@ -268,14 +274,26 @@ $(function() {
   //Function to display menu items when passed an array of
   //menu items objects.
   function displayMenuItems(menuItemsArray) {
+
     $.each(menuItemsArray,function (index,value) {
+      let tagsHtml = "";
       $(".results ul").append(`<li>${value.name}</li>`);
       $(".results ul").append(`<div class="menu-item-description">${value.description}</div>`);
       if(value.specialInstructions !== ""){
         $(".results ul").append(`<div class="special-instructions">Special Instructions: ${value.specialInstructions}</div>`);
       }
       $(".results ul").append(`<div class="menu-item-price">$${value.price}</div>`);
+
+
+      $.each(value.tags,function (index,value2) {
+        console.log('tag:',value2);
+        tagsHtml = tagsHtml.concat(`<span>${value2}</span>`);
+      });
+      console.log(tagsHtml);
+      $(".results ul").append(`<div class="menu-item-tags">${tagsHtml}</div>`);
     });
+
+
   }
 
   //Format phone number to show (xxx)xxx-xxx
@@ -358,7 +376,8 @@ $(function() {
 
   //Function to handle when user clicks on a restaurant link
   function handleRestaurantLink(){
-    console.log("Calling handleRestaurantLink function");
+    clearMenuItems();
+
     //Hide restaurant list on page
     $(".restaurant-list").addClass("hide");
 
@@ -422,9 +441,8 @@ $(function() {
 
   //Function that will handle a new search.
   function handleNewSearch() {
-    // console.log('Calling handleNewSearch function');
     clearRestaurantList();
-
+    clearMenuItems();
     //Reset checkboxes for filters
     $('input:checkbox').removeAttr('checked');
 
