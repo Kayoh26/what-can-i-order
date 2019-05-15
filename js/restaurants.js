@@ -7,6 +7,8 @@ const restaurants = [
       state: "NY",
       zip: 10016,
     }, //end of address
+    latitude:40.751261,
+    longitude:-73.980208,
     phone: 2126977867,
     menuItems: [
       {
@@ -40,6 +42,8 @@ const restaurants = [
       state: "NY",
       zip: 10010,
     }, //end of address
+    latitude:40.741169,
+    longitude:-73.985338,
     phone: 2124663330,
     menuItems: [
       {
@@ -73,6 +77,8 @@ const restaurants = [
       state: "NY",
       zip: 10016,
     }, //end of address
+    latitude:40.744957,
+    longitude:-73.981944,
     phone: 2127251411,
     menuItems: [
       {
@@ -92,6 +98,8 @@ const restaurants = [
       state: "NY",
       zip: 10012,
     }, //end of address
+    latitude:40.726590,
+    longitude:-74.002154,
     phone: 2126776200,
     menuItems: [
       {
@@ -111,6 +119,8 @@ const restaurants = [
       state: "NY",
       zip: 10017,
     }, //end of address
+    latitude:40.754458,
+    longitude:-73.972680,
     phone: 2127549800,
     menuItems: [
       {
@@ -144,6 +154,8 @@ const restaurants = [
       state: "NY",
       zip: 10019,
     }, //end of address
+    latitude:40.762876,
+    longitude:-73.983837,
     phone: 2125865000,
     menuItems: [
       {
@@ -177,6 +189,8 @@ const restaurants = [
       state: "NY",
       zip: 10009,
     }, //end of address
+    latitude:40.726114,
+    longitude:-73.983962,
     phone: 6469227948,
     menuItems: [
       {
@@ -196,6 +210,8 @@ const restaurants = [
       state: "NY",
       zip: 11222,
     }, //end of address
+    latitude:40.730375,
+    longitude:-73.953390,
     phone: 3477630152,
     menuItems: [
       {

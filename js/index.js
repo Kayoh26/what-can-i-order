@@ -8,6 +8,8 @@ const restaurants = [
       state: "NY",
       zip: 10016,
     }, //end of address
+    latitude:40.751261,
+    longitude:-73.980208,
     phone: 2126977867,
     menuItems: [
       {
@@ -15,7 +17,7 @@ const restaurants = [
         description: "Wild Alaskan Salmon with lemon thyme. Gluten-Free. Farm Greens with Mint (Base), Cashew Kale Caesar (Market side) , Lemon Wedge (Sauce)",
         specialInstructions: "",
         price: 12.96,
-        tags: ["low sodium", "low sugar"]
+        tags: ["low Sodium", "low Sugar"]
       },
       {
         name: "Charred Chicken Market Bowl",
@@ -41,6 +43,8 @@ const restaurants = [
       state: "NY",
       zip: 10010,
     }, //end of address
+    latitude:40.741169,
+    longitude:-73.985338,
     phone: 2124663330,
     menuItems: [
       {
@@ -74,6 +78,8 @@ const restaurants = [
       state: "NY",
       zip: 10016,
     }, //end of address
+    latitude:40.744957,
+    longitude:-73.981944,
     phone: 2127251411,
     menuItems: [
       {
@@ -93,6 +99,8 @@ const restaurants = [
       state: "NY",
       zip: 10012,
     }, //end of address
+    latitude:40.726590,
+    longitude:-74.002154,
     phone: 2126776200,
     menuItems: [
       {
@@ -112,6 +120,8 @@ const restaurants = [
       state: "NY",
       zip: 10017,
     }, //end of address
+    latitude:40.754458,
+    longitude:-73.972680,
     phone: 2127549800,
     menuItems: [
       {
@@ -145,6 +155,8 @@ const restaurants = [
       state: "NY",
       zip: 10019,
     }, //end of address
+    latitude:40.762876,
+    longitude:-73.983837,
     phone: 2125865000,
     menuItems: [
       {
@@ -178,6 +190,8 @@ const restaurants = [
       state: "NY",
       zip: 10009,
     }, //end of address
+    latitude:40.726114,
+    longitude:-73.983962,
     phone: 6469227948,
     menuItems: [
       {
@@ -197,6 +211,8 @@ const restaurants = [
       state: "NY",
       zip: 11222,
     }, //end of address
+    latitude:40.730375,
+    longitude:-73.953390,
     phone: 3477630152,
     menuItems: [
       {
@@ -306,10 +322,13 @@ $(function() {
     return null
   };
 
+  //----------------LIST OF HANDLERS-------------------
   //Function to handle filters that were selected by user.
   function handleFilter(){
+    console.log('calling handleFilter function');
     //Clear list of restaurants on page
     clearRestaurantList();
+    selectedRestrictions = [];
 
     //For each checkbox that is selected, store it's id in the
     //selectedRestrictions array.
@@ -318,6 +337,14 @@ $(function() {
     });
 
     console.log("selectedRestrictions",selectedRestrictions);
+
+    if($('.restaurant-list').hasClass('hide')){
+      $('.restaurant-list').removeClass('hide');
+    };
+    if($('.restaurant-info-container').hasClass('hide') === false){
+      $('.restaurant-info-container').addClass('hide');
+    };
+
     //Iterate through the restaurants array of objects
     //Get array of tags
     //Compare tags to selected restrictions
@@ -364,13 +391,14 @@ $(function() {
       //restriction was found.
       return $.inArray(true,results) !== -1;
     });
-    // console.log("restFilter",restFilter);
+    console.log("restFilter",restFilter);
 
     //Display restFilter array to screen
     displayRestaurantNames(restFilter);
 
     //Listen for a click on one of the links for each restaurant listed.
     $("a").click(handleRestaurantLink);
+    // $(".seach-button").click(handleFilter);
     // $(".new-search-button").click(handleNewSearch);
   };//End of handleFilter function
 
@@ -378,7 +406,11 @@ $(function() {
   function handleRestaurantLink(){
     clearMenuItems();
 
-    //Hide restaurant list on page
+    //Listen for click on back to results button
+    $(".back-button").click(handleBackToResults);
+    // $(".search-button").click(handleFilter);
+
+    //Hide restaurant list & search button on page
     $(".restaurant-list").addClass("hide");
 
     //Unhide restaurant info & back button
@@ -435,8 +467,6 @@ $(function() {
 
     //Display filtered menu items to screen
     displayMenuItems(filteredMenuItems);
-
-    $(".back-button").click(handleBackToResults);
   };//End of handleRestaurantLink function
 
   //Function that will handle a new search.
@@ -464,7 +494,7 @@ $(function() {
     //Hide Restaurant information
     $(".restaurant-info-container").addClass("hide");
 
-    //Unhide restaurant list results on page
+    //Unhide restaurant list results & search button on page
     $(".restaurant-list").removeClass("hide");
 
     //Hide Back to results button
