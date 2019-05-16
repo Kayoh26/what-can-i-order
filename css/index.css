@@ -82,6 +82,14 @@ body {
   color: white;
 }
 
+.restaurant-list a:hover {
+  color:#3BBA9C;
+  font-size: 22px;
+  transition: .5s color;
+  /* transition-property: color;
+  transition-duration: .5s; */
+}
+
 /*Results Page Styles*/
 /* .back-to-results { */
   /* background-color: #2E3047; */
