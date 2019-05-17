@@ -111,14 +111,14 @@ body {
 /*Results Container styles*/
 .restaurant-info-container {
   background-color:  #43455c;
-  padding: 30px 300px 30px 300px;
+  padding: 30px 300px;
   color: white;
   display: flex;
   justify-content: space-between;
 }
 .restaurant-info-container h3{
   color: #3BBA9C;
-  font-size: 20px;
+  /* font-size: 20px; */
   margin-bottom: 5px;
   margin-top: 5px;
 }
@@ -160,16 +160,38 @@ body {
 
 /*Sidebar Styles*/
 .sidebar {
-  width: 290px;
+  width: 300px;
   padding: 5px;
 }
 
-.map {
+.map-container{
+  width: 100%;
   height: 250px;
-  background-color: lightgrey;
-  margin-bottom: 5px;
-  margin-top: 5px;
 }
+
+#map{
+  width: 100%;
+  height: 100%;
+}
+
+#map h3 a {
+  font-size: 16px;
+  text-decoration: none;
+  color: #3BBA9C;
+}
+
+#map h3 a:visited {
+  font-size: 16px;
+  text-decoration: none;
+}
+
+#map h3 a:hover {
+  font-size: 18px;
+}
+/* #map a {
+  text-decoration: none;
+  font: Helvetica;
+} */
 
 .sidebar div{
   font-weight: 100;
@@ -177,7 +199,9 @@ body {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-
+.sidebar h3 {
+  font-size: 23px;
+}
 .full-address p {
   margin: auto;
 }

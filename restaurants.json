@@ -1,6 +1,7 @@
 [
   {
     "name": "Dig Inn - Midtown South",
+    "url":"https://www.diginn.com/",
     "address": {
       "street":"275 Madison Ave.",
       "city": "New York",
@@ -16,26 +17,27 @@
         "description": "Wild Alaskan Salmon with lemon thyme. Gluten-Free. Farm Greens with Mint (Base), Cashew Kale Caesar (Market side) , Lemon Wedge (Sauce)",
         "specialInstructions": "",
         "price": 12.96,
-        "tags""": ["low Sodium", "low Sugar"]
+        "tags": ["low Sodium", "low Sugar"]
       },
       {
         "name": "Charred Chicken Market Bowl",
         "description": "Antibiotic-free chicken thigh with lemon, fennel, and mustard seeds. Gluten-Free. Farm Greens with Mint (Base), Lemon Wedge (Sauce)",
         "specialInstructions": "",
         "price": 11.62,
-        "tags""": ["low sodium"]
+        "tags": ["low sodium"]
       },
       {
         "name": "Organic Iced Tea",
         "description": "Brew Lab organic iced teas",
         "specialInstructions": "",
         "price": 2.75,
-        "tags""": ["low sugar"]
+        "tags": ["low sugar"]
       }
     ]
   },
   {
     "name": "The Little Beet Table",
+    "url":"http://www.thelittlebeettable.com/new-york",
     "address": {
       "street":"333 Park Ave. South",
       "city": "New York",
@@ -71,6 +73,7 @@
   },
   {
     "name": "Natureworks Restaurant - E 31st",
+    "url":"https://www.natureworksrestaurant.com/",
     "address": {
       "street":"113 East 31st",
       "city": "New York",
@@ -92,6 +95,7 @@
   },
   {
     "name": "The Dutch",
+    "url":"https://www.thedutchnyc.com/",
     "address": {
       "street":"131 Sullivan Street",
       "city": "New York",
@@ -113,6 +117,7 @@
   },
   {
     "name": "Allora",
+    "url":"http://alloranyc.com/",
     "address": {
       "street":"145 East 47th Street",
       "city": "New York",
@@ -148,6 +153,7 @@
   },
   {
     "name": "Gallagher Steakhouse",
+    "url":"http://www.gallaghersnysteakhouse.com/",
     "address": {
       "street":"228 West 52nd Street",
       "city": "New York",
@@ -183,6 +189,7 @@
   },
   {
     "name": "Avant Garden - East Village",
+    "url":"https://www.avantgardennyc.com/avantgarden/home",
     "address": {
       "street":"130 E 7th St.",
       "city": "New York",
@@ -204,6 +211,7 @@
   },
   {
     "name": "Adelina's",
+    "url":"http://www.adelinasbk.com/",
     "address": {
       "street":"159 Greenpoint Ave",
       "city": "Brooklyn",

@@ -2,6 +2,7 @@
 const restaurants = [
   {
     name: "Dig Inn - Midtown South",
+    url:"https://www.diginn.com/",
     address: {
       street:"275 Madison Ave.",
       city: "New York",
@@ -37,6 +38,7 @@ const restaurants = [
   }, //end of restaurant 1 - Dig Inn - Midtown South
   {
     name: "The Little Beet Table",
+    url:"http://www.thelittlebeettable.com/new-york",
     address: {
       street:"333 Park Ave. South",
       city: "New York",
@@ -72,6 +74,7 @@ const restaurants = [
   }, //end of restaurant 2 - The Little Beet Table
   {
     name: "Natureworks Restaurant - E 31st",
+    url:"https://www.natureworksrestaurant.com/",
     address: {
       street:"113 East 31st",
       city: "New York",
@@ -93,6 +96,7 @@ const restaurants = [
   }, //end of restaurant 3 - Natureworks Restaurant - E 31st
   {
     name: "The Dutch",
+    url:"https://www.thedutchnyc.com/",
     address: {
       street:"131 Sullivan Street",
       city: "New York",
@@ -114,6 +118,7 @@ const restaurants = [
   }, //end of restaurant 4 - The Dutch
   {
     name: "Allora",
+    url:"http://alloranyc.com/",
     address: {
       street:"145 East 47th Street",
       city: "New York",
@@ -149,6 +154,7 @@ const restaurants = [
   }, //end of restaurant 5 - Allora
   {
     name: "Gallagher Steakhouse",
+    url:"http://www.gallaghersnysteakhouse.com/",
     address: {
       street:"228 West 52nd Street",
       city: "New York",
@@ -184,6 +190,7 @@ const restaurants = [
   }, //end of restaurant 6 - Gallagher Steakhouse
   {
     name: "Avant Garden - East Village",
+    url:"https://www.avantgardennyc.com/avantgarden/home",
     address: {
       street:"130 E 7th St.",
       city: "New York",
@@ -205,6 +212,7 @@ const restaurants = [
   }, //end of restaurant 7 - Avant Garden - East Village
   {
     name: "Adelina's",
+    url:"http://www.adelinasbk.com/",
     address: {
       street:"159 Greenpoint Ave",
       city: "Brooklyn",
@@ -232,10 +240,27 @@ const restaurants = [
     ] //end of menu items
   }, //end of restaurant 8 - Adelina's
 ];
+// let restaurants;
 
 $(function() {
+  const MAPBOX_PUBLIC_TOKEN = 'pk.eyJ1Ijoia2F5bzI2IiwiYSI6ImNqdm9pdDV0YjF0OXU0M3BiYTBnZDAwd2EifQ.mo69aKalphyoslL_TdSFqw';
+
+  mapboxgl.accessToken = MAPBOX_PUBLIC_TOKEN;
+
   //Print ready to console to show document is ready.
   console.log("Ready!");
+
+
+  // //Bring in restaurants data from json file
+  // $.ajax({
+  //   url: '../restaurants.json',
+  //   dataType: 'json',
+  //   async: false
+  // }).done(function (data) {
+  //   console.log('restaurants', data)
+  //   restaurants = data
+  // })
+
   //Print restaurant array to console.
   console.log(restaurants);
 
@@ -403,7 +428,8 @@ $(function() {
   };//End of handleFilter function
 
   //Function to handle when user clicks on a restaurant link
-  function handleRestaurantLink(){
+  function handleRestaurantLink(event){
+    event.preventDefault();
     clearMenuItems();
 
     //Listen for click on back to results button
@@ -436,6 +462,27 @@ $(function() {
     //Display restaurant Name
     $(".results h3").text(chosenRestaurant.name);
 
+    console.log(chosenRestaurant.latitude);
+    console.log(chosenRestaurant.longitude);
+
+    //Display Map
+    let map = new mapboxgl.Map({
+      container: 'map', // HTML container id
+      style: 'mapbox://styles/mapbox/streets-v10', // style URL
+      center: [chosenRestaurant.longitude, chosenRestaurant.latitude], // starting position as [lng, lat]
+      zoom: 15
+    });
+    // console.log(map);
+
+    let popup = new mapboxgl.Popup().setHTML(`<h3><a href=${chosenRestaurant.url} target="_blank">${chosenRestaurant.name}</a></h3>`);
+
+    new mapboxgl.Marker()
+      .setLngLat([chosenRestaurant.longitude, chosenRestaurant.latitude])
+      .setPopup(popup)
+      .addTo(map)
+
+    map.addControl(new mapboxgl.NavigationControl());
+
     //Display Restaurant Address
     $(".street").text(chosenRestaurant.address.street);
     $(".city").text(chosenRestaurant.address.city);
@@ -450,15 +497,14 @@ $(function() {
     console.log('chosenRestMenuItems:',chosenRestMenuItems);
 
     let filteredMenuItems = chosenRestMenuItems.filter(function (menuItem){
-      console.log(menuItem.tags);
-
+      // console.log(menuItem.tags);
       let results = [];
 
       $.each(selectedRestrictions,function (index,value) {
-        console.log('inArray result:',$.inArray(value,menuItem.tags)!== -1);
+        // console.log('inArray result:',$.inArray(value,menuItem.tags)!== -1);
         results.push($.inArray(value,menuItem.tags)!== -1);
       });
-      console.log('results:',results);
+      // console.log('results:',results);
 
       return $.inArray(true,results) !== -1;
     });

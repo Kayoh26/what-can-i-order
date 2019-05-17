@@ -1,6 +1,7 @@
 const restaurants = [
   {
     name: "Dig Inn - Midtown South",
+    url:"https://www.diginn.com/",
     address: {
       street:"275 Madison Ave.",
       city: "New York",
@@ -36,6 +37,7 @@ const restaurants = [
   }, //end of restaurant 1 - Dig Inn - Midtown South
   {
     name: "The Little Beet Table",
+    url:"http://www.thelittlebeettable.com/new-york",
     address: {
       street:"333 Park Ave. South",
       city: "New York",
@@ -71,6 +73,7 @@ const restaurants = [
   }, //end of restaurant 2 - The Little Beet Table
   {
     name: "Natureworks Restaurant - E 31st",
+    url:"https://www.natureworksrestaurant.com/",
     address: {
       street:"113 East 31st",
       city: "New York",
@@ -92,6 +95,7 @@ const restaurants = [
   }, //end of restaurant 3 - Natureworks Restaurant - E 31st
   {
     name: "The Dutch",
+    url:"https://www.thedutchnyc.com/",
     address: {
       street:"131 Sullivan Street",
       city: "New York",
@@ -113,6 +117,7 @@ const restaurants = [
   }, //end of restaurant 4 - The Dutch
   {
     name: "Allora",
+    url:"http://alloranyc.com/",
     address: {
       street:"145 East 47th Street",
       city: "New York",
@@ -148,6 +153,7 @@ const restaurants = [
   }, //end of restaurant 5 - Allora
   {
     name: "Gallagher Steakhouse",
+    url:"http://www.gallaghersnysteakhouse.com/",
     address: {
       street:"228 West 52nd Street",
       city: "New York",
@@ -183,6 +189,7 @@ const restaurants = [
   }, //end of restaurant 6 - Gallagher Steakhouse
   {
     name: "Avant Garden - East Village",
+    url:"https://www.avantgardennyc.com/avantgarden/home",
     address: {
       street:"130 E 7th St.",
       city: "New York",
@@ -204,6 +211,7 @@ const restaurants = [
   }, //end of restaurant 7 - Avant Garden - East Village
   {
     name: "Adelina's",
+    url:"http://www.adelinasbk.com/",
     address: {
       street:"159 Greenpoint Ave",
       city: "Brooklyn",
