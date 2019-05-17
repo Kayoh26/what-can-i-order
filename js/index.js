@@ -369,6 +369,12 @@ $(function() {
     if($('.restaurant-info-container').hasClass('hide') === false){
       $('.restaurant-info-container').addClass('hide');
     };
+    if($('.map-view-button').hasClass('hide') === true){
+      $('.map-view-button').removeClass('hide');
+    };
+    if (selectedRestrictions.length === 0) {
+      $('.map-view-button').addClass('hide');
+    }
 
     //Iterate through the restaurants array of objects
     //Get array of tags
@@ -529,9 +535,10 @@ $(function() {
     //Unhide restaurant list on page
     $(".restaurant-list").removeClass("hide");
 
-    //Hide restaurant info & back button
+    //Hide restaurant info, map view button & back button
     $(".restaurant-info-container").addClass("hide");
     $(".back-button").addClass("hide");
+    $(".map-view-button").addClass("hide");
   };
 
   //Function that will handle back to results
