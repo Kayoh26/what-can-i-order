@@ -262,7 +262,7 @@ $(function() {
   // })
 
   //Print restaurant array to console.
-  console.log(restaurants);
+  // console.log(restaurants);
 
   //Hide restaurant info
   $(".restaurant-info-container").addClass("hide");
@@ -447,9 +447,8 @@ $(function() {
 
     //Listen for click on back to results button
     $(".back-button").click(handleBackToResults);
-    // $(".search-button").click(handleFilter);
 
-    //Hide restaurant list & search button on page
+    //Hide restaurant list on page
     $(".restaurant-list").addClass("hide");
 
     //Unhide restaurant info & back button
@@ -548,7 +547,7 @@ $(function() {
     $(".back-button").addClass("hide");
     $(".map-view-button").addClass("hide");
     $(".restaurant-list .map-container").addClass("hide");
-  };
+  }; //end of handleNewSearch function
 
   //Function that will handle back to results
   function handleBackToResults() {
@@ -562,7 +561,7 @@ $(function() {
     //Hide Back to results button
     $(".back-button").addClass("hide");
 
-  };
+  };//end of handleBackToResults function
 
   //Function that will handle map view Button
   function handleMapView() {
@@ -581,7 +580,7 @@ $(function() {
 
     if($('.list-view-button').hasClass('hide') === true){
       $('.list-view-button').removeClass('hide');
-    };
+    }; //end of handleMapView funciton
 
     // initialize the map
     let map2 = new mapboxgl.Map({
@@ -611,12 +610,12 @@ $(function() {
 
     map2.addControl(new mapboxgl.NavigationControl());
 
-    //Listen for click on list view button
+    //Listen for click on list view button. Call back to list funciton.
     $(".list-view-button").click(handleBackToList);
-
-    //Listen for click on link in map marker
+    //Listen for click on link in marker popup. Call handle restaurant link
+    //function.
     $("#map2 a").click(handleRestaurantLink);
-  };
+  };//end of handleMapView function
 
   function handleBackToList() {
     console.log('Calling handleBackToList');
@@ -632,20 +631,6 @@ $(function() {
     if($('.list-view-button').hasClass('hide') === false){
       $('.list-view-button').addClass('hide');
     };
-  };
+  };//end of handleBackToList funciton
 
-  // function handleMarkerLink(event) {
-  //   event.preventDefault();
-  //   console.log("calling handleMarkerLink");
-  //
-  //   let restaurantName = $(this).attr('id');
-  //   console.log('restaurantName:',restaurantName);
-  //
-  //   let chosenRestaurant = restFilter.find(function (restaurant) {
-  //     return restaurantName === restaurant.name;
-  //   });
-  //   console.log('chosenRestaurant:',chosenRestaurant);
-  //
-  // }
-
-});
+});//end of document ready funciton
