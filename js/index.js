@@ -3,6 +3,11 @@ const restaurants = [
   {
     name: "Dig Inn - Midtown South",
     url:"https://www.diginn.com/",
+    images:[
+      "digginn1.jpg",
+      "digginn2.jpg",
+      "digginn3.jpg"
+    ],
     address: {
       street:"275 Madison Ave.",
       city: "New York",
@@ -39,6 +44,11 @@ const restaurants = [
   {
     name: "The Little Beet Table",
     url:"http://www.thelittlebeettable.com/new-york",
+    images:[
+      "littlebeettable1.jpg",
+      "littlebeettable2.jpg",
+      "littlebeettable3.jpg"
+    ],
     address: {
       street:"333 Park Ave. South",
       city: "New York",
@@ -75,6 +85,11 @@ const restaurants = [
   {
     name: "Natureworks Restaurant - E 31st",
     url:"https://www.natureworksrestaurant.com/",
+    images:[
+      "natureworks1.jpg",
+      "natureworks2.jpg",
+      "natureworks3.jpg"
+    ],
     address: {
       street:"113 East 31st",
       city: "New York",
@@ -97,6 +112,11 @@ const restaurants = [
   {
     name: "The Dutch",
     url:"https://www.thedutchnyc.com/",
+    images:[
+      "thedutch1.jpg",
+      "thedutch2.jpg",
+      "thedutch3.jpg"
+    ],
     address: {
       street:"131 Sullivan Street",
       city: "New York",
@@ -119,6 +139,11 @@ const restaurants = [
   {
     name: "Allora",
     url:"http://alloranyc.com/",
+    images:[
+      "allora1.jpg",
+      "allora2.jpg",
+      "allora3.jpg"
+    ],
     address: {
       street:"145 East 47th Street",
       city: "New York",
@@ -155,6 +180,11 @@ const restaurants = [
   {
     name: "Gallagher Steakhouse",
     url:"http://www.gallaghersnysteakhouse.com/",
+    images:[
+      "gallagher1.jpg",
+      "gallagher2.jpg",
+      "gallagher3.jpg"
+    ],
     address: {
       street:"228 West 52nd Street",
       city: "New York",
@@ -191,6 +221,11 @@ const restaurants = [
   {
     name: "Avant Garden - East Village",
     url:"https://www.avantgardennyc.com/avantgarden/home",
+    images:[
+      "avant1.jpg",
+      "avant2.jpg",
+      "avant3.jpg"
+    ],
     address: {
       street:"130 E 7th St.",
       city: "New York",
@@ -213,6 +248,11 @@ const restaurants = [
   {
     name: "Adelina's",
     url:"http://www.adelinasbk.com/",
+    images:[
+      "adelina1.jpg",
+      "adelina2.jpeg",
+      "adelina3.jpeg"
+    ],
     address: {
       street:"159 Greenpoint Ave",
       city: "Brooklyn",
@@ -300,8 +340,12 @@ $(function() {
 
   //This function clears the menu items on page.
   function clearMenuItems() {
-    $(".results li").remove();
-    $(".results div").remove();
+    $(".menu-item-list li").remove();
+    $(".menu-item-list div").remove();
+  }
+
+  function clearCarouselImages() {
+    $(".results .carousel").remove();
   }
 
   //Function to display restaurant names when passed an array of
@@ -315,15 +359,14 @@ $(function() {
   //Function to display menu items when passed an array of
   //menu items objects.
   function displayMenuItems(menuItemsArray) {
-
     $.each(menuItemsArray,function (index,value) {
       let tagsHtml = "";
-      $(".results ul").append(`<li>${value.name}</li>`);
-      $(".results ul").append(`<div class="menu-item-description">${value.description}</div>`);
+      $(".menu-item-list").append(`<li>${value.name}</li>`);
+      $(".menu-item-list").append(`<div class="menu-item-description">${value.description}</div>`);
       if(value.specialInstructions !== ""){
-        $(".results ul").append(`<div class="special-instructions">Special Instructions: ${value.specialInstructions}</div>`);
+        $(".menu-item-list").append(`<div class="special-instructions">Special Instructions: ${value.specialInstructions}</div>`);
       }
-      $(".results ul").append(`<div class="menu-item-price">$${value.price}</div>`);
+      $(".menu-item-list").append(`<div class="menu-item-price">$${value.price}</div>`);
 
 
       $.each(value.tags,function (index,value2) {
@@ -331,10 +374,8 @@ $(function() {
         tagsHtml = tagsHtml.concat(`<span>${value2}</span>`);
       });
       console.log(tagsHtml);
-      $(".results ul").append(`<div class="menu-item-tags">${tagsHtml}</div>`);
-    });
-
-
+      $(".menu-item-list").append(`<div class="menu-item-tags">${tagsHtml}</div>`);
+    })
   }
 
   //Format phone number to show (xxx)xxx-xxx
@@ -444,6 +485,7 @@ $(function() {
   function handleRestaurantLink(event){
     event.preventDefault();
     clearMenuItems();
+    clearCarouselImages();
 
     //Listen for click on back to results button
     $(".back-button").click(handleBackToResults);
@@ -474,6 +516,23 @@ $(function() {
     //Display restaurant Name
     $(".results h3").text(chosenRestaurant.name);
 
+    //Add carousel div to HTML document
+    $(".results h3").after(`<div class="carousel"></div>`);
+    //Add images to carousel div
+    $.each(chosenRestaurant.images, function(index,image){
+      console.log('Chosen restaurant img filename:' , image)
+      $(".carousel").append(`<div><img src="./images/${image}"></div>`);
+    });
+
+    //initialize carousel
+    $(".carousel").slick({
+  		dots: true,
+  		autoplay: true,
+  		autoplaySpeed: 1500,
+  		infinite: true,
+  		fade: true,
+  		cssEase: 'linear'
+	   });
     console.log(chosenRestaurant.latitude);
     console.log(chosenRestaurant.longitude);
 
@@ -484,7 +543,6 @@ $(function() {
       center: [chosenRestaurant.longitude, chosenRestaurant.latitude], // starting position as [lng, lat]
       zoom: 15
     });
-    // console.log(map);
 
     let popup = new mapboxgl.Popup().setHTML(`<h3><a href=${chosenRestaurant.url} target="_blank">${chosenRestaurant.name}</a></h3>`);
 
@@ -531,6 +589,7 @@ $(function() {
   function handleNewSearch() {
     clearRestaurantList();
     clearMenuItems();
+    clearCarouselImages();
     //Reset checkboxes for filters
     $('input:checkbox').removeAttr('checked');
 
@@ -612,9 +671,6 @@ $(function() {
 
     //Listen for click on list view button. Call back to list funciton.
     $(".list-view-button").click(handleBackToList);
-    //Listen for click on link in marker popup. Call handle restaurant link
-    //function.
-    $("#map2 a").click(handleRestaurantLink);
   };//end of handleMapView function
 
   function handleBackToList() {

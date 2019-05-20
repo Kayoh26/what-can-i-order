@@ -2,6 +2,11 @@ const restaurants = [
   {
     name: "Dig Inn - Midtown South",
     url:"https://www.diginn.com/",
+    images:[
+      "digginn1.jpg",
+      "digginn2.jpg",
+      "digginn3.jpg"
+    ],
     address: {
       street:"275 Madison Ave.",
       city: "New York",
@@ -38,6 +43,11 @@ const restaurants = [
   {
     name: "The Little Beet Table",
     url:"http://www.thelittlebeettable.com/new-york",
+    images:[
+      "littlebeettable1.jpg",
+      "littlebeettable2.jpg",
+      "littlebeettable3.jpg"
+    ],
     address: {
       street:"333 Park Ave. South",
       city: "New York",
@@ -74,6 +84,11 @@ const restaurants = [
   {
     name: "Natureworks Restaurant - E 31st",
     url:"https://www.natureworksrestaurant.com/",
+    images:[
+      "natureworks1.jpg",
+      "natureworks2.jpg",
+      "natureworks3.jpg"
+    ],
     address: {
       street:"113 East 31st",
       city: "New York",
@@ -96,6 +111,11 @@ const restaurants = [
   {
     name: "The Dutch",
     url:"https://www.thedutchnyc.com/",
+    images:[
+      "thedutch1.jpg",
+      "thedutch2.jpg",
+      "thedutch3.jpg"
+    ],
     address: {
       street:"131 Sullivan Street",
       city: "New York",
@@ -118,6 +138,11 @@ const restaurants = [
   {
     name: "Allora",
     url:"http://alloranyc.com/",
+    images:[
+      "allora1.jpg",
+      "allora2.jpg",
+      "allora3.jpg"
+    ],
     address: {
       street:"145 East 47th Street",
       city: "New York",
@@ -154,6 +179,11 @@ const restaurants = [
   {
     name: "Gallagher Steakhouse",
     url:"http://www.gallaghersnysteakhouse.com/",
+    images:[
+      "gallagher1.jpg",
+      "gallagher2.jpg",
+      "gallagher3.jpg"
+    ],
     address: {
       street:"228 West 52nd Street",
       city: "New York",
@@ -190,6 +220,11 @@ const restaurants = [
   {
     name: "Avant Garden - East Village",
     url:"https://www.avantgardennyc.com/avantgarden/home",
+    images:[
+      "avant1.jpg",
+      "avant2.jpg",
+      "avant3.jpg"
+    ],
     address: {
       street:"130 E 7th St.",
       city: "New York",
@@ -212,6 +247,11 @@ const restaurants = [
   {
     name: "Adelina's",
     url:"http://www.adelinasbk.com/",
+    images:[
+      "adelina1.jpg",
+      "adelina2.jpeg",
+      "adelina3.jpeg"
+    ],
     address: {
       street:"159 Greenpoint Ave",
       city: "Brooklyn",
