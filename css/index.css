@@ -259,6 +259,25 @@ img{
   font-size: 15px;
 }
 
+
+@media only screen and (max-width: 1400px) {
+  .wcio-logo {
+    padding: 100px 200px;
+  }
+
+  .restrictions {
+    padding: 30px 200px;
+  }
+
+  .restaurant-list {
+    padding: 30px 200px;
+  }
+  
+  .restaurant-info-container {
+    padding: 30px 150px;
+  }
+}
+
 /* Extra Large devices (large desktops, 1200px and down) */
 @media only screen and (max-width: 1200px) {
   /* styles go here */
@@ -267,11 +286,11 @@ img{
   }
 
   .restrictions {
-    padding: 30px 150px;
+    padding: 30px 125px;
   }
 
   .restriction-options-container{
-    padding: 20px 150px;
+    padding: 20px 125px;
   }
 
   .restaurant-list {
