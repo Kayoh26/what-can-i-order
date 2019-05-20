@@ -344,8 +344,14 @@ $(function() {
     $(".menu-item-list div").remove();
   }
 
+  //This function clears images in carousel
   function clearCarouselImages() {
     $(".results .carousel").remove();
+  }
+
+  //This function clears URL in side bar of restaurant info container
+  function clearWebsite() {
+    $(".rest-url").remove();
   }
 
   //Function to display restaurant names when passed an array of
@@ -404,6 +410,7 @@ $(function() {
 
     console.log("selectedRestrictions",selectedRestrictions);
 
+    //Check what elements are hidden/unhidden
     if($('.restaurant-list').hasClass('hide')){
       $('.restaurant-list').removeClass('hide');
     };
@@ -418,6 +425,12 @@ $(function() {
     };
     if($('.map-view-button').hasClass('hide') === true){
       $('.map-view-button').removeClass('hide');
+    };
+    if($('.list-view-button').hasClass('hide') === false){
+      $('.list-view-button').addClass('hide');
+    };
+    if($('.back-button').hasClass('hide') === false){
+      $('.back-button').addClass('hide');
     };
     if (selectedRestrictions.length === 0) {
       $('.map-view-button').addClass('hide');
@@ -477,15 +490,16 @@ $(function() {
     //Listen for a click on one of the links for each restaurant listed.
     $("a").click(handleRestaurantLink);
     $(".map-view-button").click(handleMapView);
-    // $(".seach-button").click(handleFilter);
-    // $(".new-search-button").click(handleNewSearch);
+
   };//End of handleFilter function
 
   //Function to handle when user clicks on a restaurant link
   function handleRestaurantLink(event){
     event.preventDefault();
+    //Clear Menu Items list & carousel images
     clearMenuItems();
     clearCarouselImages();
+    clearWebsite();
 
     //Listen for click on back to results button
     $(".back-button").click(handleBackToResults);
@@ -553,6 +567,8 @@ $(function() {
 
     map.addControl(new mapboxgl.NavigationControl());
 
+    //Display Restaurant Website
+    $(".site").after(`<a href=${chosenRestaurant.url} target="_blank" class ="rest-url">${chosenRestaurant.url}</a>`);
     //Display Restaurant Address
     $(".street").text(chosenRestaurant.address.street);
     $(".city").text(chosenRestaurant.address.city);
@@ -566,6 +582,8 @@ $(function() {
     chosenRestMenuItems = chosenRestaurant.menuItems;
     console.log('chosenRestMenuItems:',chosenRestMenuItems);
 
+    //Filter through menu items for chosen restaurant. Pull out items that meet
+    //diet restriction selections
     let filteredMenuItems = chosenRestMenuItems.filter(function (menuItem){
       // console.log(menuItem.tags);
       let results = [];
@@ -632,14 +650,15 @@ $(function() {
       $('.restaurant-list .map-container').removeClass('hide');
     };
 
-    //Check if restaurant list is hidden. It is not hidden, hide it.
+    //Check if restaurant list is hidden. If it is not hidden, hide it.
     if($('.restaurant-list ul').hasClass('hide') === false){
       $('.restaurant-list ul').addClass('hide');
     };
 
+    //Check if list view button is hidden. If it is hidden, unhide it.
     if($('.list-view-button').hasClass('hide') === true){
       $('.list-view-button').removeClass('hide');
-    }; //end of handleMapView funciton
+    };
 
     // initialize the map
     let map2 = new mapboxgl.Map({
@@ -661,29 +680,38 @@ $(function() {
         `<h3>${restaurant.name}</h3><a href="#" id= "${restaurant.name}">Menu Items</a>`
       );
 
+      //add markers to map2
       new mapboxgl.Marker()
       .setLngLat([restaurant.longitude, restaurant.latitude])
       .setPopup(popup)
       .addTo(map2)
     });
 
+    //add navigation control to map2
     map2.addControl(new mapboxgl.NavigationControl());
 
     //Listen for click on list view button. Call back to list funciton.
     $(".list-view-button").click(handleBackToList);
+
+    //Listen for click on link on popup in map. Call handleRestaurantLink
+    //funciton.
+    // $("#map2 a").click(handleRestaurantLink);
   };//end of handleMapView function
 
   function handleBackToList() {
     console.log('Calling handleBackToList');
 
+    //If restaurant list is hidden, unhide it.
     if($('.restaurant-list ul').hasClass('hide') === true){
       $('.restaurant-list ul').removeClass('hide');
     };
 
+    //If map is unhidden, hide it.
     if($('.restaurant-list .map-container').hasClass('hide') === false){
       $('.restaurant-list .map-container').addClass('hide');
     };
 
+    //If list view button is unhidden, hide it.
     if($('.list-view-button').hasClass('hide') === false){
       $('.list-view-button').addClass('hide');
     };

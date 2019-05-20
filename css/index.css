@@ -247,6 +247,138 @@ img{
   margin: auto;
 }
 
+.rest-url {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.rest-url:visited {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+/* Extra Large devices (large desktops, 1200px and down) */
+@media only screen and (max-width: 1200px) {
+  /* styles go here */
+  .wcio-logo {
+    padding: 100px 150px;
+  }
+
+  .restrictions {
+    padding: 30px 150px;
+  }
+
+  .restriction-options-container{
+    padding: 20px 150px;
+  }
+
+  .restaurant-list {
+    padding: 30px 200px;
+  }
+
+  .restaurant-info-container {
+    padding: 30px 150px;
+  }
+}
+
+/* Large devices (desktops, 992px and down) */
+@media only screen and (max-width: 992px) {
+  /* styles go here */
+  .wcio-logo {
+    padding: 100px 100px;
+  }
+
+  .wcio-logo h1 {
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 80px;
+  }
+
+  .restrictions {
+    padding: 30px 65px;
+  }
+
+  .restriction-options-container{
+    padding: 20px 120px;
+    justify-content: space-around;
+  }
+
+  .restaurant-list {
+    padding: 30px 110px;
+  }
+
+  .restaurant-info-container {
+    display: block;
+  }
+
+  .results {
+    width: 100%;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+}
+
+/*Medium devices (tablets, 768px and down)*/
+@media only screen and (max-width: 768px) {
+  /* styles go here */
+  .wcio-logo {
+    padding: 100px 60px;
+  }
+
+  .wcio-logo h1 {
+    font-size: 65px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .restrictions {
+    padding: 30px 30px;
+  }
+
+  .restrictions h2{
+    font-size: 35px;
+  }
+
+  .restriction-options-container{
+    padding: 20px 50px;
+  }
+
+  .restriction-options-container div{
+    font-size: 23px;
+  }
+
+  .search button {
+    font-size: 20px;
+    width: 150px;
+    padding: 5px 5px;
+  }
+
+  .restaurant-list {
+    padding: 30px 30px;
+  }
+
+  .restaurant-info-container {
+    padding: 30px 30px;
+  }
+}
+
+/*Small devices (landscape phone, 576px and down)*/
+@media only screen and (max-width: 576px) {
+  /* styles go here */
+  .restrictions {
+    padding: 25px 20px;
+  }
+
+  .restriction-options-container{
+    padding: 20px 20px;
+  }
+}
+
 .hide {
   display: none;
 }
